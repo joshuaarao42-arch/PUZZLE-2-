@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cipher Breach | ACM USTP CDO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Oxanium:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="nebula a" aria-hidden="true"></div>
+<div class="nebula b" aria-hidden="true"></div>
+
+<div class="shell">
+  <header>
+    <div class="org"><span><b>ACM</b> USTP CDO &middot; Student Chapter</span></div>
+    <div class="status" id="status" role="status"><span class="dot"></span><span id="statusText">Awaiting decryption</span></div>
+  </header>
+
+  <section class="hero">
+    <h1 data-text="Cipher Breach">Cipher Breach</h1>
+    <p>A transmission from deep space is locked behind a cipher. Decode it to open the next page of the mission.</p>
+  </section>
+
+  <section class="stats" aria-label="Mission statistics" aria-live="polite">
+    <div class="stat"><span class="stat-label">ELAPSED</span><strong id="timer">00:00</strong></div>
+    <div class="stat"><span class="stat-label">ATTEMPTS</span><strong id="attempts">0</strong></div>
+    <div class="stat"><span class="stat-label">SCORE</span><strong id="score">0</strong></div>
+    <div class="stat"><span class="stat-label">BEST TIME</span><strong id="bestTime">--:--</strong></div>
+    <button class="reset-btn" id="resetBtn" type="button">RESET MISSION</button>
+  </section>
+
+  <!-- Mission progress -->
+  <div class="track" id="track" aria-label="Mission progress"><div class="fill" id="fill"></div></div>
+
+  <main class="grid" id="mission">
+
+    <section class="card">
+      <div class="row">
+        <div><h2 id="sectorTitle">Sector 1</h2><span class="sub" id="sectorName"></span></div>
+        <span class="badge" id="difficulty"></span>
+      </div>
+      <p class="sub">Intercepted message (Caesar cipher):</p>
+      <div class="cipher" id="cipherText" aria-live="polite"></div>
+
+      <label for="answer">Your decoded message</label>
+      <input type="text" id="answer" autocomplete="off" spellcheck="false" placeholder="Type the decrypted text">
+
+      <div class="btns">
+        <button class="primary" id="decryptBtn" type="button">DECRYPT</button>
+        <button id="hintBtn" type="button">Show hint</button>
+        <button id="copyBtn" type="button">Copy cipher</button>
+      </div>
+      <div class="hint" id="hint"></div>
+      <div class="result" id="result" role="alert"></div>
+      <button class="primary" id="proceed" type="button">PROCEED TO NEXT PAGE</button>
+    </section>
+
+
+    <section class="card">
+      <h2>Cipher wheel</h2>
+      <p class="sub" style="margin-bottom:10px">Turn the wheel to test a shift. Each decoded letter sits under its encrypted letter. Use the + and − buttons or arrow keys.</p>
+      <div class="wheel-wrap">
+        <svg id="wheel" viewBox="0 0 240 240" aria-label="Caesar cipher wheel"></svg>
+        <div class="tool">
+          <button id="minus" type="button" aria-label="Decrease shift">&minus;</button>
+          <output id="shiftOut">Shift 0</output>
+          <button id="plus" type="button" aria-label="Increase shift">+</button>
+        </div>
+        <div class="preview">Preview: <b id="preview"></b></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="card terminal">
+    <div class="sub">Mission terminal</div>
+    <div class="term-body" id="term" role="log" aria-live="polite" aria-relevant="additions"></div>
+  </section>
+
+  <section class="card finish" id="finish">
+    <h2>Mission complete</h2>
+    <p class="sub">All five sectors cleared. ACM website access unlocked in this sample.</p>
+  </section>
+
+  <section class="card debrief" id="debrief" aria-live="polite" aria-labelledby="debriefTitle">
+    <div class="debrief-mark" aria-hidden="true">✦</div>
+    <p class="debrief-kicker">TRANSMISSION RECEIVED · FIELD REPORT</p>
+    <h2 id="debriefTitle">Sector cleared</h2>
+    <p class="debrief-sub" id="debriefSector">Recovery report ready.</p>
+    <div class="recovered">
+      <span class="stat-label">RECOVERED MESSAGE</span>
+      <strong id="debriefMessage"></strong>
+    </div>
+    <div class="debrief-stats">
+      <div><span class="stat-label">ATTEMPTS</span><strong id="debriefAttempts">—</strong></div>
+      <div><span class="stat-label">SECTOR REWARD</span><strong id="debriefReward">—</strong></div>
+      <div><span class="stat-label">RATING</span><strong id="debriefRating">—</strong></div>
+    </div>
+    <p class="debrief-note" id="debriefNote"></p>
+    <button class="primary debrief-next" id="debriefNext" type="button">CONTINUE</button>
+  </section>
+
+  <footer>Cipher Breach &middot; ACM USTP CDO <span aria-hidden="true">·</span> Progress is saved on this device</footer>
+</div>
+
+<div class="overlay" id="overlay"><div class="box"><p id="overlayText">Unlocking next page...</p><div class="bar"><span></span></div></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
