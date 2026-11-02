@@ -7,7 +7,7 @@ Cipher Breach is a browser-based puzzle game developed for **ACM USTP CDO – St
 Enter the laboratory, solve the encrypted codes, and breach the containment system!
 
 ![image](https://github.com/joshuaarao42-arch/PUZZLE-2-/blob/main/SS/Screenshot%202026-11-02%20141502.png?raw=true)
-![image]()
+![image](https://github.com/joshuaarao42-arch/PUZZLE-2-/blob/main/SS/Screenshot%202026-11-02%20141730.png?raw=true)
 
 
 ## 🚀 Features
