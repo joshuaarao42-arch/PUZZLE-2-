@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#040711">
+<title>Cipher Breach | ACM USTP CDO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Rajdhani:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="glow a" aria-hidden="true"></div>
+<div class="glow b" aria-hidden="true"></div>
+<div class="hazard" aria-hidden="true"></div>
+
+<div class="shell">
+  <header>
+    <div class="org"><span><b>ACM</b> USTP CDO &middot; Student Chapter</span></div>
+    <div class="status" id="status" role="status"><span class="dot"></span><span id="statusText">Door locked</span></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="warning-sign" data-text="ENTER AT OWN RISK"><span aria-hidden="true">&#9888;</span> Enter at own risk</p>
+      <h1 data-text="Cipher Breach">Cipher Breach</h1>
+      <p class="lede">The lab is sealed and the only way in is through its encrypted door codes. Decode each message to open the next door.</p>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Mission controls">
+    <button class="reset-btn" id="resetBtn" type="button">Reset mission</button>
+  </section>
+
+  <!-- Door progress -->
+  <div class="track" id="track" aria-label="Mission progress"><div class="fill" id="fill"></div></div>
+
+  <main class="grid" id="mission">
+
+    <section class="card">
+      <div class="row">
+        <div><h2 id="zoneTitle">Zone 1</h2><span class="sub" id="zoneName"></span></div>
+        <span class="badge" id="difficulty"></span>
+      </div>
+      <p class="sub">Intercepted door code (Caesar cipher):</p>
+      <div class="cipher" id="cipherText" aria-live="polite"></div>
+
+      <label for="answer">Your decoded message</label>
+      <input type="text" id="answer" autocomplete="off" spellcheck="false" placeholder="Type the decrypted text">
+
+      <div class="btns">
+        <button class="primary" id="decryptBtn" type="button">Decrypt</button>
+        <button id="hintBtn" type="button">Show hint</button>
+        <button id="copyBtn" type="button">Copy cipher</button>
+      </div>
+      <div class="hint" id="hint"></div>
+      <div class="result" id="result" role="alert"></div>
+      <button class="primary" id="proceed" type="button">Open next door</button>
+    </section>
+
+
+    <section class="card">
+      <h2>Decoder dial</h2>
+      <p class="sub" style="margin-bottom:10px">Outer ring = encrypted. Inner ring = decoded. Set the shift with the controls or arrow keys.</p>
+      <div class="wheel-wrap">
+        <svg id="wheel" viewBox="0 0 240 240" aria-label="Caesar cipher wheel"></svg>
+        <div class="dial-guide" aria-hidden="true"><span><i class="key outer-key"></i>Encrypted</span><span><i class="key inner-key"></i>Decoded</span></div>
+        <div class="tool">
+          <button id="minus" type="button" aria-label="Decrease shift">&minus;</button>
+          <output id="shiftOut">Shift 0</output>
+          <button id="plus" type="button" aria-label="Increase shift">+</button>
+        </div>
+        <div class="preview">Preview: <b id="preview"></b></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="card terminal">
+    <div class="sub">Lab terminal</div>
+    <div class="term-body" id="term" role="log" aria-live="polite" aria-relevant="additions"></div>
+  </section>
+
+  <section class="card finish" id="finish" aria-label="The final bunker opens into darkness"></section>
+
+</div>
+<div class="hazard foot" aria-hidden="true"></div>
+
+<div class="overlay" id="overlay"><div class="smoke" aria-hidden="true"></div><div class="box"><p id="overlayText">Door unlocking...</p><div class="bar"><span></span></div></div></div>
+
+<script src="script.js"></script>
+</body>
+</html>
